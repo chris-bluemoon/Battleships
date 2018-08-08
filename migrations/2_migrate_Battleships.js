@@ -1,5 +1,5 @@
-var Battleships = artifacts.require("Battleships");
+var BattleshipGame = artifacts.require("BattleshipGame");
 
 module.exports = function(deployer) {
-  deployer.deploy(Battleships);
+  deployer.deploy(BattleshipGame);
 }

@@ -9,6 +9,8 @@
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css" integrity="sha384-Smlep5jCw/wG7hdkwQ/Z5nLIefveQRIY9nfy6xoR1uRYBtpZgI6339F5dgvm/e9B" crossorigin="anonymous">
 
+  <link rel="stylesheet" type="text/css" href="css/battleship.css">
+
   <!-- Optional JavaScript -->
   <!-- jQuery first, then Popper.js, then Bootstrap JS -->
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
@@ -18,62 +20,65 @@
   <!-- <script src="../node_modules/web3/dist/web3.min.js"></script> -->
   <script src="web3.min.js"></script>
 
-  <title>Battleships</title>
+  <title>Battleship</title>
 </head>
 
 <body>
 
-  <h1>Chris's Battleship Game</h1>
+  <!-- battleship board -->
+  <div id="board">
+    <!-- battleship message display -->
+    <h1 id="messageArea">Chris's Battleship</h1>
+    <!-- battleship user inputs -->
+    <textarea id="playerName">Dave</textarea>
 
-  <div class="container" </div>
-    <div class="row" </div>
-      <div class="col-md-8" style="background-color: #FC9999">
-        <p id="inst" </p>
-          <label for="name" class="col-lg-2 control-label">Instructor Name</label>
-          <input id="name" type="text">
+    <form id="fireForm">
+      <div class="input-group">
+        <input type="text" id="guessInput" placeholder="A0" autofocus class="form-control">
+        <input type="button" id="fireButton" value="Fire!" class="btn btn-danger">
       </div>
-      <div class="col-md-2" style="background-color: #00CC99">Second</div>
-      <div class="col-md-2" style="background-color: #FFCC99">Third</div>
+    </form>
+    <form id="registerForm">
+      <div class="input-group">
+        <input type="text" id="registerInput" placeholder="name" autofocus class="form-control">
+        <input type="button" id="registerButton" value="Register" class="btn btn-primary">
+      </div>
+    </form>
 
-      <script>
-        if (typeof web3 !== 'undefined') {
-          web3 = new Web3(web3.currentProvider);
-          console.log("Found web3 injection");
-          console.log(web3);
-        } else {
-          console.log("I am Trying new web3 connection");
-          console.log(typeof web3);
-          web3 = new Web3(new Web3.providers.HttpProvider("http://127.0.0.1:8545"));
-        }
-        web3.eth.defaultAccount = web3.eth.accounts[0];
+    <!-- battleship table -->
+    <table>
+      <!-- battleship row 0 -->
+      <tr>
+        <td id="00"></td><td id="01"></td><td id="02"></td><td id="03"></td><td id="04"></td><td id="05"></td><td id="06"></td>
+      </tr>
+      <!-- battleship row 1 -->
+      <tr>
+        <td id="10"></td><td id="11"></td><td id="12"></td><td id="13"></td><td id="14"></td><td id="15"></td><td id="16"></td>
+      </tr>
+      <!-- battleship row 2 -->
+      <tr>
+        <td id="20"></td><td id="21"></td><td id="22"></td><td id="23"></td><td id="24"></td><td id="25"></td><td id="26"></td>
+      </tr>
+      <!-- battleship row 3 -->
+      <tr>
+        <td id="30"></td><td id="31"></td><td id="32"></td><td id="33"></td><td id="34"></td><td id="35"></td><td id="36"></td>
+      </tr>
+      <!-- battleship row 4 -->
+      <tr>
+        <td id="40"></td><td id="41"></td><td id="42"></td><td id="43"></td><td id="44"></td><td id="45"></td><td id="46"></td>
+      </tr>
+      <!-- battleship row 5 -->
+      <tr>
+        <td id="50"></td><td id="51"></td><td id="52"></td><td id="53"></td><td id="54"></td><td id="55"></td><td id="56"></td>
+      </tr>
+      <!-- battleship row 6 -->
+      <tr>
+        <td id="60"></td><td id="61"></td><td id="62"></td><td id="63"></td><td id="64"></td><td id="65"></td><td id="66"></td>
+      </tr>
+    </table>
 
-        var BattleshipContract = web3.eth.contract([{"inputs":[],"payable":false,"stateMutability":"nonpayable","type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"}],"name":"LogShotResult","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"}],"name":"LogPlaceLegality","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"uint256"},{"indexed":false,"name":"","type":"uint256"}],"name":"LogShipStartStop","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"}],"name":"LogAllShipsPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"uint256"},{"indexed":false,"name":"","type":"uint256"},{"indexed":false,"name":"","type":"uint256"}],"name":"LogShipPlaced","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"uint256"}],"name":"LogCurrentShip","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"}],"name":"LogShipSunk","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"}],"name":"LogGameWon","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"}],"name":"LogAllShipsSunk","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"string"},{"indexed":false,"name":"","type":"uint8"}],"name":"LogCheckShipStatus","type":"event"},{"constant":true,"inputs":[],"name":"returnPlayers","outputs":[{"name":"","type":"string"},{"name":"","type":"string"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":false,"inputs":[{"name":"playerName","type":"string"}],"name":"registerPlayer","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"x","type":"uint8"},{"name":"y","type":"uint8"},{"name":"shipType","type":"string"},{"name":"playerName","type":"string"},{"name":"direction","type":"uint8"}],"name":"placeShip","outputs":[],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"playerName_","type":"string"}],"name":"checkIfWon","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":false,"inputs":[{"name":"x","type":"uint8"},{"name":"y","type":"uint8"}],"name":"fireShot","outputs":[{"name":"","type":"string"}],"payable":false,"stateMutability":"nonpayable","type":"function"},{"constant":true,"inputs":[{"name":"playerName_","type":"string"}],"name":"returnBoard","outputs":[{"name":"","type":"uint256"}],"payable":false,"stateMutability":"view","type":"function"},{"constant":true,"inputs":[{"name":"a","type":"string"},{"name":"b","type":"string"}],"name":"compareStrings","outputs":[{"name":"","type":"bool"}],"payable":false,"stateMutability":"view","type":"function"}]);
+      <script src="js/battleship.js"></script>
 
-        var Battleship = BattleshipContract.at('0xb8eff60e9c1911904038f1074e84410184be02c1');
-        console.log(Battleship);
-
-        console.log("Calling registerPlayer");
-        Battleship.registerPlayer(function(error, transHash) {
-          if (!error) {
-            $("#inst").html(transHash);
-            console.log("Registered player");
-          } else {
-            console.log("Didn't register players");
-            console.log(error);
-          }
-        });
-
-        console.log("Calling returnPlayers");
-        Battleship.returnPlayers(function(error, result) {
-          if (!error) {
-            $("#inst").html(result);
-            console.log("Returned players");
-          } else {
-            console.log("Didn't return players");
-            console.log(error);
-          }
-        });
-      </script>
 </body>
 
 </html>

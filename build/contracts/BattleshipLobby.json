@@ -1,0 +1,126 @@
+{
+  "contractName": "BattleshipLobby",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3006080604052600080fd00a165627a7a723058200a925d9c1f4a41198d52d2ee869aa883fab55a2a8aff9fd9dc2f65188dac76890029",
+  "deployedBytecode": "0x6080604052600080fd00a165627a7a723058200a925d9c1f4a41198d52d2ee869aa883fab55a2a8aff9fd9dc2f65188dac76890029",
+  "sourceMap": "58:34:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;58:34:1;;;;;;;",
+  "deployedSourceMap": "58:34:1:-;;;;;",
+  "source": "pragma solidity ^0.4.23;\n\nimport './BattleshipGame.sol';\n\ncontract BattleshipLobby {\n\n  \n\n\n}\n",
+  "sourcePath": "/Users/chrismilner/Documents/Bluemoon Consulting/projects/Battleships/contracts/BattleshipLobby.sol",
+  "ast": {
+    "absolutePath": "/Users/chrismilner/Documents/Bluemoon Consulting/projects/Battleships/contracts/BattleshipLobby.sol",
+    "exportedSymbols": {
+      "BattleshipLobby": [
+        1304
+      ]
+    },
+    "id": 1305,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1302,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "absolutePath": "/Users/chrismilner/Documents/Bluemoon Consulting/projects/Battleships/contracts/BattleshipGame.sol",
+        "file": "./BattleshipGame.sol",
+        "id": 1303,
+        "nodeType": "ImportDirective",
+        "scope": 1305,
+        "sourceUnit": 1301,
+        "src": "26:30:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1304,
+        "linearizedBaseContracts": [
+          1304
+        ],
+        "name": "BattleshipLobby",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 1305,
+        "src": "58:34:1"
+      }
+    ],
+    "src": "0:93:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/chrismilner/Documents/Bluemoon Consulting/projects/Battleships/contracts/BattleshipLobby.sol",
+    "exportedSymbols": {
+      "BattleshipLobby": [
+        1304
+      ]
+    },
+    "id": 1305,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 1302,
+        "literals": [
+          "solidity",
+          "^",
+          "0.4",
+          ".23"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:24:1"
+      },
+      {
+        "absolutePath": "/Users/chrismilner/Documents/Bluemoon Consulting/projects/Battleships/contracts/BattleshipGame.sol",
+        "file": "./BattleshipGame.sol",
+        "id": 1303,
+        "nodeType": "ImportDirective",
+        "scope": 1305,
+        "sourceUnit": 1301,
+        "src": "26:30:1",
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 1304,
+        "linearizedBaseContracts": [
+          1304
+        ],
+        "name": "BattleshipLobby",
+        "nodeType": "ContractDefinition",
+        "nodes": [],
+        "scope": 1305,
+        "src": "58:34:1"
+      }
+    ],
+    "src": "0:93:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.4.24+commit.e67f0147.Emscripten.clang"
+  },
+  "networks": {
+    "1533455003585": {
+      "events": {},
+      "links": {},
+      "address": "0xe3a6afa3257e9b98ec8dae913cd3071e84ae54a2",
+      "transactionHash": "0x1b168dc36c1416d679b1e16fb8674daf528dd203f60b43753aafd798008a7ec4"
+    }
+  },
+  "schemaVersion": "2.0.0",
+  "updatedAt": "2018-08-08T15:23:42.843Z"
+}

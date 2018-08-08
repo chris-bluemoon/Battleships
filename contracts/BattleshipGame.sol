@@ -1,10 +1,11 @@
 pragma solidity ^0.4.23;
 
-contract Battleships {
+contract BattleshipGame {
 
   enum GameState {InPlay, PlacingShips, GameEnded}
 
   uint8 constant BOARDSIZE = 10;
+
  struct ship {
       string shipName;
       uint8 shipLength;
@@ -14,15 +15,20 @@ contract Battleships {
   }
 
   struct playerState {
-      string playerName;
       address playerAddr;
+      string playerName;
       uint[BOARDSIZE][BOARDSIZE] boardMatrix;
-      bool isActive;
       ship[] ships;
   }
 
   playerState player1;
   playerState player2;
+
+  struct Game {
+    playerState player1;
+    playerState player2;
+    GameState gameState;
+  }
 
   ship frigate;
   ship submarine;
@@ -46,7 +52,7 @@ contract Battleships {
 
   uint8 constant NUM_OF_SHIPS = 3;
 
-   constructor() public {
+  constructor() public {
     gameState = GameState.PlacingShips;
 
     frigate.shipName = "FRIGATE";
@@ -68,7 +74,6 @@ contract Battleships {
     player2.ships.push(frigate);
     player2.ships.push(submarine);
     player2.ships.push(destroyer);
-
   }
 
   event LogShotResult(string, string);
@@ -102,7 +107,7 @@ contract Battleships {
     return (player1.playerName, player2.playerName);
   }
 
-  function registerPlayer(string playerName) public {
+  function registerPlayer(string playerName) public returns (address) {
 
     bytes memory tempEmptyStringTest = bytes(player1.playerName);
 
@@ -115,7 +120,7 @@ contract Battleships {
       player2.playerName = playerName;
       gameState = GameState.PlacingShips;
     }
-
+    return (msg.sender);
   }
 
   function placeShip(uint8 x, uint8 y, string shipType, string playerName, uint8 direction) public playersRegistered {
@@ -278,6 +283,27 @@ contract Battleships {
               return shotResult;
           }
       }
+  }
+
+  function clearGame() public {
+     for (uint8 x=0; x<BOARDSIZE; y++) {
+       for (uint8 y=0; y<BOARDSIZE; y++) {
+         player1.boardMatrix[x][y] = 0;
+         player2.boardMatrix[x][y] = 0;
+       }
+     }
+    for (uint8 i=0; i<NUM_OF_SHIPS; i++) {
+       player1.ships[i].shipStatus = SHIP_FREE;
+       player1.ships[i].shipDamage = 0;
+       player2.ships[i].shipStatus = SHIP_FREE;
+       player2.ships[i].shipDamage = 0;
+     }
+
+     player1.playerName = '';
+     player2.playerName = '';
+
+    currentPlayer = player1;
+
   }
 
   function returnBoard(string playerName_) public constant returns (uint) {
